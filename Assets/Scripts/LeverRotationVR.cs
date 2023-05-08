@@ -45,8 +45,8 @@ public class LeverRotationVR : MonoBehaviour
         ////Set Rotation
         //gameObject.transform.localEulerAngles = new Vector3(LeverPosition, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z);
 
-        Debug.Log(LeverPosition);
-        Debug.Log(LeverPercent);
+        //Debug.Log(LeverPosition);
+        //Debug.Log(LeverPercent);
     }
 
     // Update is called once per frame
@@ -76,14 +76,14 @@ public class LeverRotationVR : MonoBehaviour
             sound.Play();
             LeverON.Invoke();
             isOn = true;
-            Debug.Log(isOn);
+            //Debug.Log(isOn);
         }
         else if (LeverPercent == 0 && !isOff)
         {
             sound.Play();
             LeverOFF.Invoke();
             isOff = true;
-            Debug.Log(isOff);
+            //Debug.Log(isOff);
         }
         else if (LeverPercent != 100)
         {
@@ -96,6 +96,6 @@ public class LeverRotationVR : MonoBehaviour
 
         //// Check Percentages and Current Lever Rotation ////
         //Debug.Log(LeverCurrent);
-        Debug.Log(LeverPercent);
+        //Debug.Log(LeverPercent);
     }
 }
