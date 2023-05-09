@@ -8,7 +8,7 @@ public class LeverRotationVR : MonoBehaviour
     public GameObject lever;
     float LeverCurrent;
     float LeverPosition = 45;
-    public int LeverPercent;
+    public double LeverPercent;
     public int LeverOnOffMiddle;
     public UnityEvent LeverON;
     public UnityEvent LeverOFF;

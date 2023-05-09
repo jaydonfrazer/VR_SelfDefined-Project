@@ -9,7 +9,7 @@ public class Percentage : MonoBehaviour
 {
     //Set reference
     public TextMeshProUGUI counterText;
-    public float counter;
+    public double counter;
 
     //Get our Lever and its Script
     public LeverRotationVR ConnectedLever;
