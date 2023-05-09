@@ -10,7 +10,7 @@ public class scrMovingDoor : MonoBehaviour
     public LeverRotationVR ConnectedLever;
 
     //Percentage
-    public double MovingPercent;
+    private double MovingPercent;
 
     //Translating
     public float MoveUnits;
@@ -20,9 +20,10 @@ public class scrMovingDoor : MonoBehaviour
     private double Movement;
 
     //Rotating
+    public float RotationUnits;
     private float RotationMin;
-    public float RotationMax;
-    public float Rotation;
+    private float RotationMax;
+    private double Rotation;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,11 @@ public class scrMovingDoor : MonoBehaviour
         MovementMax = gameObject.transform.position.x + MoveUnits;
         //Debug.Log(MovementMin);
         //Debug.Log(MovementMax);
+
+        RotationMin = gameObject.transform.eulerAngles.x;
+        RotationMax = gameObject.transform.eulerAngles.x + RotationUnits;
+        //Debug.Log(RotationMin);
+        //Debug.Log(RotationMax);
     }
 
     // Update is called once per frame
@@ -42,11 +48,13 @@ public class scrMovingDoor : MonoBehaviour
 
         //Doubles are able to represent much larger numbers than a float, so it is better for coordinates
         Movement = MovementMin + (MovementMax - MovementMin) * MovingPercent;
+        Rotation = RotationMin + (RotationMax - RotationMin) * MovingPercent;
         //Debug.Log(MovingPercent);
         //Debug.Log(ConnectedLever.LeverPercent);
         //Debug.Log(Movement);
 
         gameObject.transform.position = new Vector3((float)Movement, transform.position.y, transform.position.z);
-        Debug.Log(Movement);
+        gameObject.transform.localEulerAngles = new Vector3((float)Rotation, transform.eulerAngles.y, transform.eulerAngles.z);
+        //Debug.Log(Movement);
     }
 }
