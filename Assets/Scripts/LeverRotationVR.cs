@@ -12,6 +12,7 @@ public class LeverRotationVR : MonoBehaviour
     public int LeverOnOffMiddle;
     public UnityEvent LeverON;
     public UnityEvent LeverOFF;
+    public UnityEvent LeverMID;
     private AudioSource sound;
     bool isOn;
     bool isOff;
@@ -92,6 +93,10 @@ public class LeverRotationVR : MonoBehaviour
         else if (LeverPercent != 0)
         {
             isOff = false;
+        }
+        else if (LeverPercent < 100 || LeverPercent > 0)
+        {
+            LeverMID.Invoke();
         }
 
         //// Check Percentages and Current Lever Rotation ////

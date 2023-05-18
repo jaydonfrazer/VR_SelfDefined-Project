@@ -6,11 +6,24 @@ using UnityEngine;
 
 public class scrMovingDoor : MonoBehaviour
 {
-    //Get our Lever and its Script
+    //Get our Levers and their Scripts
     public LeverRotationVR ConnectedLever;
+    public LeverRotationVR MoveUpLever;
+    public LeverRotationVR MoveForwardLever;
+
+    public LeverRotationVR RotateXLever;
+    public LeverRotationVR RotateYLever;
+    public LeverRotationVR RotateZLever;
+
 
     //Percentage
     private double MovingPercent;
+    private double MovingUpPercent;
+    private double MovingForwardPercent;
+
+    private double RotatingXPercent;
+    private double RotatingYPercent;
+    private double RotatingZPercent;
 
     //Translating
     public float MoveUnits;
@@ -76,16 +89,22 @@ public class scrMovingDoor : MonoBehaviour
     {
         //Get our percentage
         MovingPercent = (ConnectedLever.LeverPercent / 100);
+        MovingUpPercent = (MoveUpLever.LeverPercent / 100);
+        MovingForwardPercent = (MoveForwardLever.LeverPercent / 100);
+
+        RotatingXPercent = (RotateXLever.LeverPercent / 100);
+        RotatingYPercent = (RotateYLever.LeverPercent / 100);
+        RotatingZPercent = (RotateZLever.LeverPercent / 100);
 
         //Doubles are able to represent much larger numbers than a float, so it is better for coordinates
         Movement = MovementMin + (MovementMax - MovementMin) * MovingPercent;
-        Rotation = RotationMin + (RotationMax - RotationMin) * MovingPercent;
+        Rotation = RotationMin + (RotationMax - RotationMin) * RotatingXPercent;
 
-        MovementUp = MovementUpMin + (MovementUpMax - MovementUpMin) * MovingPercent;
-        RotationY = RotationYMin + (RotationYMax - RotationYMin) * MovingPercent;
+        MovementUp = MovementUpMin + (MovementUpMax - MovementUpMin) * MovingUpPercent;
+        RotationY = RotationYMin + (RotationYMax - RotationYMin) * RotatingYPercent;
 
-        MovementForward = MovementForwardMin + (MovementForwardMax - MovementForwardMin) * MovingPercent;
-        RotationZ = RotationZMin + (RotationZMax - RotationZMin) * MovingPercent;
+        MovementForward = MovementForwardMin + (MovementForwardMax - MovementForwardMin) * MovingForwardPercent;
+        RotationZ = RotationZMin + (RotationZMax - RotationZMin) * RotatingZPercent;
         //Debug.Log(MovingPercent);
         //Debug.Log(ConnectedLever.LeverPercent);
         //Debug.Log(Movement);
